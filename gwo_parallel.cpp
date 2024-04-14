@@ -43,6 +43,9 @@ float clip(float n, float lower, float upper) {
 
 int main(int argc, char *argv[]){
 
+    double prog = omp_get_wtime();
+
+    int round = stoi(argv[3]);
     int population = stoi(argv[1]);
     int nIterations = stoi(argv[2]);
 
@@ -116,20 +119,21 @@ int main(int argc, char *argv[]){
     // if(fitness(guides[0]) == -1.700000) printf("Optimality Reached\n");
     // else printf("Optimality Not Reached.\n");
 
-    printf("Population: %d\n", population);
-    printf("Iterations %d\n",nIterations);
-    printf("Time Taken: %f\n",end-start);
+    // printf("Population: %d\n", population);
+    // printf("Iterations %d\n",nIterations);
+    // printf("Time Taken: %f\n",end-start);
     
 
     // for(int i = 0; i < population; i++){
     //     printf("%f %f\tFitness: %f\n",wolves[i][0], wolves[i][1], fitness_scores[i]);
     // }
 
-    printf("Guides:\n");
+    // printf("Guides:\n");
 
-    for(auto i : index){
-        printf("%f %f\tFitness: %f\n", wolves[i][0], wolves[i][1], fitness_scores[i]);
-    }
+    // for(auto i : index){
+    //     printf("%f %f\tFitness: %f\n", wolves[i][0], wolves[i][1], fitness_scores[i]);
+    // }
 
+    printf("%d, %d, %d, %f, %f, %f\n", round, population, nIterations, prog, start, end);
 
 }

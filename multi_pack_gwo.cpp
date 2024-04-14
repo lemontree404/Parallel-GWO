@@ -10,7 +10,9 @@ using namespace std;
 
 
 int main(int argc, char *argv[]){
+    double prog = omp_get_wtime();
 
+    int round = stoi(argv[4]);
     int num_packs = stoi(argv[1]);
     int wolves_per_pack = stoi(argv[2]);
     int num_iterations = stoi(argv[3]);
@@ -88,31 +90,80 @@ int main(int argc, char *argv[]){
     
     double end = omp_get_wtime();
 
-    printf("Packs: %d\n", num_packs);
-    printf("Wolves per Pack: %d\n", wolves_per_pack);
-    printf("Iterations %d\n",num_iterations);
-    printf("Time Taken: %f\n",end-start);
-
-    FILE *file = fopen("wolves.txt", "w+"); // Open a file for writing
-    if (file == NULL) {
-        printf("Error opening file!\n");
-        return 1;
-    }
-
-    for(int pack = 0; pack < num_packs; pack++){
-        for(int wolf = 0; wolf < wolves_per_pack; wolf++){
-            fprintf(file,"%f %f\n",wolves[pack][wolf][0], wolves[pack][wolf][1]);
-        }
-    }
-
-    fclose(file);
-
-    for(int pack = 0; pack < num_packs; pack++){
-        printf("\nPack %d:\n",pack);
-        for(int guide = 0; guide < k; guide++){
-            printf("Guide %d: %f %f\tFitness: %f\n", guide, wolves[pack][guide][0], wolves[pack][guide][1],fitness_scores[pack][guide]);
-            fprintf(file,"%f %f\n",wolves[pack][guide][0], wolves[pack][guide][1]);
-        }
-    }
+    printf("%d,%d,%d,%d,%f,%f,%f\n",round, num_packs, wolves_per_pack, num_iterations,prog,start,end);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // printf("Packs: %d\n", num_packs);
+    // printf("Wolves per Pack: %d\n", wolves_per_pack);
+    // printf("Iterations %d\n",num_iterations);
+    // printf("Time Taken: %f\n",end-start);
+
+    // FILE *file = fopen("wolves.txt", "w+"); // Open a file for writing
+    // if (file == NULL) {
+    //     printf("Error opening file!\n");
+    //     return 1;
+    // }
+
+    // for(int pack = 0; pack < num_packs; pack++){
+    //     for(int wolf = 0; wolf < wolves_per_pack; wolf++){
+    //         fprintf(file,"%f %f\n",wolves[pack][wolf][0], wolves[pack][wolf][1]);
+    //     }
+    // }
+
+    // fclose(file);
+
+    // for(int pack = 0; pack < num_packs; pack++){
+    //     printf("\nPack %d:\n",pack);
+    //     for(int guide = 0; guide < k; guide++){
+    //         printf("Guide %d: %f %f\tFitness: %f\n", guide, wolves[pack][guide][0], wolves[pack][guide][1],fitness_scores[pack][guide]);
+    //         fprintf(file,"%f %f\n",wolves[pack][guide][0], wolves[pack][guide][1]);
+    //     }
+    // }
