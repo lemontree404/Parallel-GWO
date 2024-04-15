@@ -19,7 +19,7 @@ CUDA:
 
 - Since built in synchronization methods were not available for CUDA, synchronzation was done implicitly using CPU synchronization
 
-![](/home/vedant/Downloads/WhatsApp Image 2024-04-15 at 10.11.14 AM.jpeg)
+![](./WhatsApp Image 2024-04-15 at 10.11.14 AM.jpeg)
 
 While implementing single pack gwo parallely, wolves were equally split between threads, to ensure maximum speedup. Similarly, for multiple packs, each pack was split equally among the threads.
 
@@ -39,7 +39,7 @@ The constructs used in this process were:
 
 # Multiple Optima Convergence
 
-![](/home/vedant/Downloads/WhatsApp Image 2024-04-15 at 10.17.01 AM.jpeg)
+![](./WhatsApp Image 2024-04-15 at 10.17.01 AM.jpeg)
 
 # Performance Metric
 
@@ -49,11 +49,11 @@ The average speed ups with regards to number of iterations can be seen below:
 
 
 
-![](/home/vedant/Downloads/WhatsApp Image 2024-04-15 at 10.00.23 AM.jpeg)
+![](./WhatsApp Image 2024-04-15 at 10.00.23 AM.jpeg)
 
-![](/home/vedant/Downloads/WhatsApp Image 2024-04-15 at 10.00.15 AM.jpeg)
+![](./WhatsApp Image 2024-04-15 at 10.00.15 AM.jpeg)
 
-![](/home/vedant/Downloads/WhatsApp Image 2024-04-15 at 9.59.47 AM.jpeg)
+![](./WhatsApp Image 2024-04-15 at 9.59.47 AM.jpeg)
 
-![](/home/vedant/Downloads/WhatsApp Image 2024-04-15 at 9.59.33 AM.jpeg)
+![](./WhatsApp Image 2024-04-15 at 9.59.33 AM.jpeg)
 
