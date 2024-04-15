@@ -39,7 +39,7 @@ The constructs used in this process were:
 
 # Multiple Optima Convergence
 
-![](./WhatsApp Image 2024-04-15 at 10.17.01 AM.jpeg)
+![](https://github.com/lemontree404/Parallel-GWO/blob/main/WhatsApp%20Image%202024-04-15%20at%2010.11.14%20AM.jpeg)
 
 # Performance Metric
 
