@@ -10,9 +10,9 @@ using namespace std;
 
 
 int main(int argc, char *argv[]){
+
     double prog = omp_get_wtime();
 
-    int round = stoi(argv[4]);
     int num_packs = stoi(argv[1]);
     int wolves_per_pack = stoi(argv[2]);
     int num_iterations = stoi(argv[3]);
@@ -90,56 +90,7 @@ int main(int argc, char *argv[]){
     
     double end = omp_get_wtime();
 
-    printf("%d,%d,%d,%d,%f,%f,%f\n",round, num_packs, wolves_per_pack, num_iterations,prog,start,end);
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    printf("%d,%d,%d,%f,%f,%f\n", num_packs, wolves_per_pack, num_iterations,prog,start,end);
 
     // printf("Packs: %d\n", num_packs);
     // printf("Wolves per Pack: %d\n", wolves_per_pack);
@@ -167,3 +118,5 @@ int main(int argc, char *argv[]){
     //         fprintf(file,"%f %f\n",wolves[pack][guide][0], wolves[pack][guide][1]);
     //     }
     // }
+
+}
