@@ -6,7 +6,7 @@
 #include <random>
 #include <cmath>
 #include <omp.h>
-
+#define CLIP 20
 using namespace std;
 
 float get_rand_num(float low, float high)
@@ -21,7 +21,8 @@ float fitness(vector<float> & wolf){
     
     float x = wolf[0];
     float y = wolf[1];
-    return 0.2 * (x * x + y * y) + 0.8 * pow(sin(2 * x),2) - 0.7 * cos(3 * y) - 1;
+    // return 0.2 * (x * x + y * y) + 0.8 * pow(sin(2 * x),2) - 0.7 * cos(3 * y) - 1;
+    return -0.0001 * pow(abs(sin(x) * sin(y) * exp(abs(100 - (sqrt(x*x + y*y)/M_PI)))) + 1, 0.1);
 }
 
 vector<int> get_guide_indices(vector <float> &fitness_scores, int k)
@@ -45,7 +46,6 @@ int main(int argc, char *argv[]){
 
     double prog = omp_get_wtime();
 
-    int round = stoi(argv[3]);
     int population = stoi(argv[1]);
     int nIterations = stoi(argv[2]);
 
@@ -107,7 +107,7 @@ int main(int argc, char *argv[]){
                 X[i] = {guides[i][0] - A[i][0] * D[i][0], guides[i][1] - A[i][1] * D[i][1]};
             }
 
-            wolves[id] = {clip((X[0][0] + X[1][0] + X[2][0]) / 3,-10,10), clip((X[0][1] + X[1][1] + X[2][1]) / 3,-10,10)};
+            wolves[id] = {clip((X[0][0] + X[1][0] + X[2][0]) / 3,-CLIP,CLIP), clip((X[0][1] + X[1][1] + X[2][1]) / 3,-CLIP,CLIP)};
 
             #pragma omp barrier
 
@@ -115,6 +115,8 @@ int main(int argc, char *argv[]){
     }
 
     double end = omp_get_wtime();
+
+    printf("%d,%d,%d,%f,%f,%f\n", 1, population, nIterations,prog,start,end);
 
     // if(fitness(guides[0]) == -1.700000) printf("Optimality Reached\n");
     // else printf("Optimality Not Reached.\n");
@@ -124,9 +126,9 @@ int main(int argc, char *argv[]){
     // printf("Time Taken: %f\n",end-start);
     
 
-    // for(int i = 0; i < population; i++){
-    //     printf("%f %f\tFitness: %f\n",wolves[i][0], wolves[i][1], fitness_scores[i]);
-    // }
+    // // for(int i = 0; i < population; i++){
+    // //     printf("%f %f\tFitness: %f\n",wolves[i][0], wolves[i][1], fitness_scores[i]);
+    // // }
 
     // printf("Guides:\n");
 
@@ -134,6 +136,7 @@ int main(int argc, char *argv[]){
     //     printf("%f %f\tFitness: %f\n", wolves[i][0], wolves[i][1], fitness_scores[i]);
     // }
 
-    printf("%d, %d, %d, %f, %f, %f\n", round, population, nIterations, prog, start, end);
+    
+
 
 }

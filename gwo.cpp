@@ -9,6 +9,10 @@
 
 using namespace std;
 
+
+// Random Number Generator:
+//  Takes low and high as input.
+
 float get_rand_num(float low, float high)
 {
     random_device rd;  // Will be used to obtain a seed for the random number engine
@@ -17,12 +21,22 @@ float get_rand_num(float low, float high)
     return (float)dis(gen);
 }
 
+
+
+// Fitness Function:
+//  Calculates fitness function of wolf given a pointer to wolf vector.
+
 float fitness(vector<float> & wolf){
     
     float x = wolf[0];
     float y = wolf[1];
     return 0.2 * (x * x + y * y) + 0.8 * pow(sin(2 * x),2) - 0.7 * cos(3 * y) - 1;
 }
+
+
+
+// Guide Indices:
+//  Returns indices of the top 'k' guides given fitness scores of pack.
 
 vector<int> get_guide_indices(vector <float> &fitness_scores, int k)
 {
@@ -37,35 +51,54 @@ vector<int> get_guide_indices(vector <float> &fitness_scores, int k)
     return ans;
 }
 
+
 float clip(float n, float lower, float upper) {
   return max(lower, min(n, upper));
 }
+
+
+
+
+// Command Line Args: 
+//  1) Population No.
+//  2) No. of Iterations
 
 int main(int argc, char *argv[]){
 
     double prog = omp_get_wtime();
 
-    int round = stoi(argv[3]);
     int population = stoi(argv[1]);
     int nIterations = stoi(argv[2]);
 
-    vector <vector<float>> wolves(population, vector<float> (2));
+    vector <vector<float>> wolves(population, vector<float> (2)); // Creating wolves array of shape (population,2)
 
-    vector<float> fitness_scores(population);
+    vector<float> fitness_scores(population); // Creating fitness scores array of shape (population)
     
+
+
+    // Initializing wolves and their fitness scores
+
     for(int i = 0; i < population; i++){
         
         wolves[i] = {get_rand_num(-10,10),get_rand_num(-10,10)};
         fitness_scores[i] = fitness(wolves[i]);
     }
 
+
+    // Getting top 3 wolves' indices.
+
     vector <int> index = get_guide_indices(fitness_scores, 3);
+
+
+    // Retrieving top 3 wolves.
 
     vector< vector <float>> guides;
 
     for(auto i: index) guides.push_back(wolves[i]);
 
     double start = omp_get_wtime();
+
+    // ALGORITHM START
     
     for(int iter = 0; iter < nIterations; iter++){
 
@@ -109,44 +142,14 @@ int main(int argc, char *argv[]){
 
     }
 
+    // ALGORITHM END        
+
     double end = omp_get_wtime();
 
-    printf("%d, %d, %d, %f, %f, %f\n", round, population, nIterations, prog, start, end);
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // // if(fitness(guides[0]) == -1.700000) printf("Optimality Reached\n");
-    // // else printf("Optimality Not Reached.\n");
+    printf("%d,%d,%d,%f,%f,%f\n", 1, population, nIterations,prog,start,end);
+    
+    // if(fitness(guides[0]) == -1.700000) printf("Optimality Reached\n");
+    // else printf("Optimality Not Reached.\n");
 
     // printf("Population: %d\n", population);
     // printf("Iterations %d\n",nIterations);
@@ -163,3 +166,5 @@ int main(int argc, char *argv[]){
     //     printf("%f %f\tFitness: %f\n", wolves[i][0], wolves[i][1], fitness_scores[i]);
     // }
 
+
+}
