@@ -19,7 +19,7 @@ CUDA:
 
 - Since built in synchronization methods were not available for CUDA, synchronzation was done implicitly using CPU synchronization
 
-![](./WhatsApp Image 2024-04-15 at 10.11.14 AM.jpeg)
+![]([./WhatsApp Image 2024-04-15 at 10.11.14 AM.jpeg](https://github.com/lemontree404/Parallel-GWO/blob/main/WhatsApp%20Image%202024-04-15%20at%2010.11.14%20AM.jpeg))
 
 While implementing single pack gwo parallely, wolves were equally split between threads, to ensure maximum speedup. Similarly, for multiple packs, each pack was split equally among the threads.
 
