@@ -39,7 +39,7 @@ The constructs used in this process were:
 
 # Multiple Optima Convergence
 
-![](https://github.com/lemontree404/Parallel-GWO/blob/main/WhatsApp%20Image%202024-04-15%20at%2010.11.14%20AM.jpeg)
+![](./images/img2.jpeg)
 
 # Performance Metric
 
@@ -49,11 +49,13 @@ The average speed ups with regards to number of iterations can be seen below:
 
 
 
-![](./WhatsApp Image 2024-04-15 at 10.00.23 AM.jpeg)
+![](./images/img3.jpeg)
 
-![](./WhatsApp Image 2024-04-15 at 10.00.15 AM.jpeg)
+![](./images/img4.jpeg)
 
-![](./WhatsApp Image 2024-04-15 at 9.59.47 AM.jpeg)
+![](./images/img5.jpeg)
 
-![](./WhatsApp Image 2024-04-15 at 9.59.33 AM.jpeg)
+![](./images/img6.jpeg)
+
+NOTE: Amdahl's Optimization Limit (dotted line) plotted here is only an approximation made from the program runtime.
 
